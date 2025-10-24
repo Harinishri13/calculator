@@ -21,6 +21,10 @@ function Calculator() {
   };
   const calculate = () => {
     // eslint-disable-next-line no-eval
+    if (!calc) {
+      setResult(null);
+      return;
+    }
     setResult(eval(calc).toString());
   };
   return (
@@ -30,6 +34,8 @@ function Calculator() {
         <input type="text" className="display" value={calc} disabled />
         {result ? (
           <div className="result">{result}</div>
+        ) : result === null ? (
+          <div className="result">Error</div>
         ) : (
           <div className="result"></div>
         )}
